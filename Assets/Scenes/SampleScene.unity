@@ -376,4 +376,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerVel: 5
+  aimSensitivity: 7
   playerRigidBody: {fileID: 1810960257}

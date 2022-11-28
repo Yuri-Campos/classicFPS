@@ -5,7 +5,9 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public float playerVel;
+    public float aimSensitivity;
     private Vector2 keyInput;
+    private Vector2 mouseMovement;
     private Vector2 input2d;
     public Rigidbody2D playerRigidBody;
 
@@ -18,10 +20,10 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //calling the movePlayer function everyframe
+        //calling the movePlayer function once per frame
         //we will be using this function in order to achieve the pseudo 3d effect of the classic doom
         movePlayer();
-
+        cameraMovement();
 
         //scrapped test movement for a future project
         //traditional2dMove();
@@ -59,5 +61,15 @@ public class PlayerController : MonoBehaviour
         playerRigidBody.velocity = (horizontal2d + vertical2d) * playerVel;
     }
     */
+
+
+    //function to rotate the camera in the z axis
+    //this code will not feature a x axis rotation since we're trying to replicate the classic doom camera
+    private void cameraMovement()
+    {
+        mouseMovement = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y") * aimSensitivity);
+
+        transform.rotation = Quaternion.Euler(transform.rotation.eulerAngles.x, transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z - mouseMovement.x);
+    }
 
 }
