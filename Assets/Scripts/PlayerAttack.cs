@@ -22,7 +22,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (Input.GetButtonDown("Fire1"))
         {
-            if(ammo == 0)
+            if (ammo == 0)
             {
                 Debug.Log("Press TEMP to reload");
                 return;
@@ -43,11 +43,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void reload()
     {
-        if(Input.GetButtonDown("Fire2") && maxAmmo > 0)
+        if (Input.GetButtonDown("Fire2"))
         {
+            if (reserveAmmo <= 0)
+            {
+                Debug.Log("cant reload: no more ammo");
+                return;
+            }
             reserveAmmo -= maxAmmo - ammo;
             ammo = maxAmmo - ammo;
-            Debug.Log(reserveAmmo);     
-        }   
+            Debug.Log(reserveAmmo);
+        }
     }
 }

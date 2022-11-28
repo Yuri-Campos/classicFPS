@@ -492,4 +492,4 @@ MonoBehaviour:
   gameCam: {fileID: 519420031}
   maxAmmo: 30
   ammo: 15
-  reserveAmmo: 150
+  reserveAmmo: 30
